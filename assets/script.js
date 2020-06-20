@@ -26,7 +26,7 @@ $.ajax({
     })
 // OPEN WEATHER API
 $.ajax({
-    url: "https://api.openweathermap.org/data/2.5/forecast?q=" + "birmingham" + "&appid=505bc59551e545ee228f440eb0aa0ff2",
+    url: "https://api.openweathermap.org/data/2.5/forecast?q=" + "birmingham" + "&appid=007c688e86824172fcd3437ec768284b",
     method: "GET"})
     .then(function(response){
         console.log(response)
@@ -47,3 +47,5 @@ window.onload = function() {
       end: 'Birmingham, AL'
     });
   }
+
+
