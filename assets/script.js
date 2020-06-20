@@ -1,5 +1,12 @@
 var state = "al"
 
+$.ajax({
+    url: "https://api.openweathermap.org/data/2.5/forecast?q=" + "birmingham" + "&appid=007c688e86824172fcd3437ec768284b",
+    method: "GET"})
+    .then(function(response){
+        console.log(response)
+    })
+    
 // COVID TRACKING API
 $.ajax({
     // State name must only be two letters and lower case!
@@ -48,4 +55,15 @@ window.onload = function() {
     });
   }
 
+$.ajax({
+    url: "https://developers.zomato.com/api/v2.1/search?entity_id=birmingham&entity_type=city&count=5&radius=8050&sort=rating",
+    method: "GET",
+    headers: {
+        "user-key": "17ef7ae8c46d3f11647c7c1eca3bf00e"
+    } })
+    .then(function(response){
+        console.log(response)
+        console.log(response.restaurants[0])
+    })
 
+    // THINGS WE WILL NEED. A FUNCTION THAT CAN GET THE LAT AND LON FOR OUR SEARCH CITY TO PLUG IN TO AJAX CALLS.
