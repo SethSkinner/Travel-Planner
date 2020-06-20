@@ -8,7 +8,8 @@
     <!-- Compressed CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
 <!-- Compressed JavaScript -->
-
+<script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
+<link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
 <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>    
 <script defer src="assets/script.js"></script>
     <title>Travel Planner</title>
@@ -33,15 +34,7 @@
       <!-- We can now combine rows and columns when there's only one column in that row -->
       <div class="row medium-8 large-7 columns">
         <div class="blog-post">
-          <h3>Awesome blog post title <small>3/6/2015</small></h3>
-          <img class="thumbnail" src="https://placehold.it/850x350">
-          <p>Praesent id metus massa, ut blandit odio. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper orci. Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque faucibus vestibulum. Nulla at nulla justo, eget luctus.</p>
-          <div class="callout">
-            <ul class="menu simple">
-              <li><a href="#">Author: Mike Mikers</a></li>
-              <li><a href="#">Comments: 3</a></li>
-            </ul>
-          </div>
+          <div id="map" style="width: 100%; height: 530px;"></div>
         </div>
   
         <div class="blog-post">
