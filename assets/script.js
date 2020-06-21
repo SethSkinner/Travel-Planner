@@ -16,6 +16,7 @@ function getData(){
         getRestaurantData(lat, lon);
         getWeather(lat, lon);
         positionMap(lat, lon);
+        getCoronavirus();
         // call more data functions, passing lat and lon from this callback
     })
 }
@@ -74,7 +75,7 @@ function positionMap(lat, lon){
 }
 
 // COVID TRACKING API
-function getCoronavirus(state){
+function getCoronavirus(){
     $.ajax({
         // State name must only be two letters and lower case!
         url: "http://covidtracking.com/api/v1/states/" + state + "/current.json",
