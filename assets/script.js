@@ -1,15 +1,6 @@
 var state = "al"
 var queryURL= "https://api.openweathermap.org/data/2.5/forecast?q=" + "birmingham" + "&appid=007c688e86824172fcd3437ec768284b"
 
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.dropdown-trigger');
-    var instances = M.Dropdown.init(elems, options);
-  });
-
-  // Or with jQuery
-
-  $('.dropdown-trigger').dropdown();
-
 function getData(){
     $.ajax({
         url: queryURL,
@@ -120,8 +111,6 @@ $.ajax({
 }
 // Mapquest API
 
-
 window.onload = function() {
     getData();
 }
-
