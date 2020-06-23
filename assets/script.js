@@ -13,6 +13,8 @@ $(document).keypress(function (e){
     }
 })
 
+getRestaurantData();
+
 console.log(citySearchEl)
 function getData(){
     $.ajax({
@@ -53,21 +55,37 @@ function getRestaurantData(lat, lon){
             for(i = 0; i < restaurants.length; i++){
       
                 var rest = restaurants[i].restaurant;
+                var resDiv = $('<div>');
+                var p1 = $('<p>').text('name: ' + rest.name);
+                var p2 = $('<p>').text('food type: ' + rest.cuisines);
+                var p3 = $('<p>').text('location: ' + rest.location.address);
+                var p4 =$('<p>').text('phone #: ' + rest.phone_numbers);
+                var p5 = $('<p>').text('open: ' + rest.timings);
+                var p6 = $('<p>').text('rating: ' + rest.user_rating.aggregate_rating);
+                var p7 = $('<p>').text('url: ' + rest.url);
+                $('#resData').append(resDiv);
+                $('#resDiv').append(p1);
                 // Restaurant Name
                 console.log(rest.name);
+                $('#resDiv').append(p2);
                 // rest food type
                 console.log(rest.cuisines);
+                $('#resDiv').append(p3);
                 // Address
                 console.log(rest.location.address);
+                $('#resDiv').append(p4);
                 // phone
                 console.log(rest.phone_numbers);
+                $('#resDiv').append(p5);
                 // time open
                 console.log(rest.timings);
+                $('#resDiv').append(p6);
                 // rating
                 console.log(rest.user_rating.aggregate_rating);
                 // photo url
                 console.log(rest.photos_url)
                 // rest url
+                $('#resDiv').append(p7);
                 console.log(rest.url)
             }
         })
@@ -131,5 +149,6 @@ $.ajax({
 
 window.onload = function() {
     getData();
+    getRestaurantData();
 }
   
