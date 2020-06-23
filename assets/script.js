@@ -84,18 +84,23 @@ function getCoronavirus(){
             console.log(response)
             // State
             response.state
+            $("#coState").text("State" + response.state);
             console.log(response.state) 
             // Current Positive Cases
             response.positive
+            $("#coPos").text("Positive Cases=" + response.positive)
             console.log(response.positive)
             // Positive Cases Increase
             response.positiveIncrease
+            $("#coIncrease").text("Increased by " + response.positiveIncrease)
             console.log(response.positiveIncrease)
             // Hospitalized Currently
             response.hospitalizedCurrently
+            $("#coHospital").text("Currently in the hospital= " + response.hospitalizedCurrently)
             console.log(response.hospitalizedCurrently)
             // Deaths
             response.death
+            $("#coDeaths").text("Current Deaths= " + response.death)
             console.log(response.death)
             
         })
