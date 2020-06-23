@@ -1,6 +1,19 @@
 var state = "al"
 var queryURL= "https://api.openweathermap.org/data/2.5/forecast?q=" + "birmingham" + "&appid=007c688e86824172fcd3437ec768284b"
 
+// Needed for dropdown that isn't working
+$(document).ready(function(){
+$('select').material_select();
+})
+// Getting data from search bar(Need to find a way to pull this out and put in queryURL)
+$(document).keypress(function (e){
+    if(e.which == 13){
+      var citySearchEl= $("#citySearchEl").val()
+      console.log(citySearchEl)
+    }
+})
+
+console.log(citySearchEl)
 function getData(){
     $.ajax({
         url: queryURL,
@@ -24,7 +37,7 @@ function getData(){
 // all the functions
 function getRestaurantData(lat, lon){
     // ajax
-    console.log("lat=" + lat + " - lon=" + lon);
+    // console.log("lat=" + lat + " - lon=" + lon);
     $.ajax({
         url: "https://developers.zomato.com/api/v2.1/search?count=5&lat=" + lat + "&lon=" + lon + "&radius=8050&sort=rating:",
         method: "GET",
@@ -119,3 +132,4 @@ $.ajax({
 window.onload = function() {
     getData();
 }
+  
