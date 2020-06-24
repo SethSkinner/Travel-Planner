@@ -39,7 +39,7 @@ function getData(){
 // all the functions
 function getRestaurantData(lat, lon){
     // ajax
-    // console.log("lat=" + lat + " - lon=" + lon);
+     console.log("lat=" + lat + " - lon=" + lon);
     $.ajax({
         url: "https://developers.zomato.com/api/v2.1/search?count=5&lat=" + lat + "&lon=" + lon + "&radius=8050&sort=rating:",
         method: "GET",
@@ -53,7 +53,7 @@ function getRestaurantData(lat, lon){
             var restaurants = response.restaurants;
     
             for(i = 0; i < restaurants.length; i++){
-      
+                var resData = $('#resData')
                 var rest = restaurants[i].restaurant;
                 var resDiv = $('<div>');
                 var p1 = $('<p>').text('name: ' + rest.name);
@@ -63,29 +63,29 @@ function getRestaurantData(lat, lon){
                 var p5 = $('<p>').text('open: ' + rest.timings);
                 var p6 = $('<p>').text('rating: ' + rest.user_rating.aggregate_rating);
                 var p7 = $('<p>').text('url: ' + rest.url);
-                $('#resData').append(resDiv);
-                $('#resDiv').append(p1);
+                resData.append(resDiv);
+                resDiv.append(p1);
                 // Restaurant Name
                 console.log(rest.name);
-                $('#resDiv').append(p2);
+                resDiv.append(p2);
                 // rest food type
                 console.log(rest.cuisines);
-                $('#resDiv').append(p3);
+                resDiv.append(p3);
                 // Address
                 console.log(rest.location.address);
-                $('#resDiv').append(p4);
+                resDiv.append(p4);
                 // phone
                 console.log(rest.phone_numbers);
-                $('#resDiv').append(p5);
+                resDiv.append(p5);
                 // time open
                 console.log(rest.timings);
-                $('#resDiv').append(p6);
+                resDiv.append(p6);
                 // rating
                 console.log(rest.user_rating.aggregate_rating);
                 // photo url
                 console.log(rest.photos_url)
                 // rest url
-                $('#resDiv').append(p7);
+                resDiv.append(p7);
                 console.log(rest.url)
             }
         })
