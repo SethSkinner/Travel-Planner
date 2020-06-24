@@ -1,22 +1,22 @@
 var state = "al"
-var queryURL= "https://api.openweathermap.org/data/2.5/forecast?q=" + "birmingham" + "&appid=007c688e86824172fcd3437ec768284b"
-
+var newCitySearch = ''
+//var queryURL= "https://api.openweathermap.org/data/2.5/forecast?q=" + "birmingham" + "&appid=007c688e86824172fcd3437ec768284b"
 // Needed for dropdown that isn't working
 $(document).ready(function(){
 $('select').material_select();
 })
 // Getting data from search bar(Need to find a way to pull this out and put in queryURL)
 $(document).keypress(function (e){
-    if(e.which == 13){
-      var citySearchEl= $("#citySearchEl").val()
+    if (e.which == 13) {
+        var citySearchEl = $("#citySearchEl").val();
+        newCitySearch = citySearchEl;
+        getData()
       console.log(citySearchEl)
     }
 })
-
-getRestaurantData();
-
 console.log(citySearchEl)
 function getData(){
+    var queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${newCitySearch}&appid=007c688e86824172fcd3437ec768284b`;
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -48,10 +48,8 @@ function getRestaurantData(lat, lon){
         } 
     })
         .then(function(response){
-            
             // console.log(response)
             var restaurants = response.restaurants;
-    
             for(i = 0; i < restaurants.length; i++){
                 var resData = $('#resData')
                 var rest = restaurants[i].restaurant;
@@ -87,6 +85,7 @@ function getRestaurantData(lat, lon){
                 // rest url
                 resDiv.append(p7);
                 console.log(rest.url)
+                resDiv.append('<hr>')
             }
         })
 }
@@ -104,7 +103,6 @@ function positionMap(lat, lon){
         end: [lat,lon]
       });
 }
-
 // COVID TRACKING API
 function getCoronavirus(){
     $.ajax({
@@ -146,9 +144,8 @@ $.ajax({
     })
 }
 // Mapquest API
-
 window.onload = function() {
     getData();
     getRestaurantData();
-}
-  
+    
+} 
