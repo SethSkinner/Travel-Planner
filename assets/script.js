@@ -137,23 +137,24 @@ $.ajax({
     url: "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=007c688e86824172fcd3437ec768284b",
     method: "GET"})
     .then(function(response){
+        var days = 0; 
         
-        console.log(response.list[0])
-
-        // Temp
-        console.log(response.list[0].main.temp)
-      
-
-        for (var i = 5; i < 40; i += 8) {
-          
-          var forecastTemp = response.list[i].main.temp;
-          
-        }
-
-        for (var j = 0; j < 5; j++) {
-         
-          $('#temp-' + (j + 1)).html(forecastTemp);
-          
+        //loops through data
+        for(var i=0; i< response.list.length; i++){
+            
+            if(response.list[i].dt_txt.split(" ")[1] == "15:00:00")
+            {
+                //putting data onto the elements on the page in current day div
+                var day = response.list[i].dt_txt.split("-")[2].split(" ")[0];
+                var month = response.list[i].dt_txt.split("-")[1];
+                var year = response.list[i].dt_txt.split("-")[0];
+                $("#" + days + "date").text(month + "/" + day + "/" + year); 
+                var temp = Math.round(((response.list[i].main.temp - 273.15) *9/5+32));
+                $("#" + days + "temps").text("Temp: " + temp + String.fromCharCode(176)+"F");
+                $("#" + days + "humidities").text("Humidity: " + response.list[i].main.humidity);
+                $("#" + days + "icons").attr("src", "http://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png");
+                days++; 
+            }
         }
     })
 }
