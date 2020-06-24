@@ -107,10 +107,10 @@ function getCoronavirus(){
         url: "http://covidtracking.com/api/v1/states/" + state + "/current.json",
         method: "GET"})
         .then(function(response){
-            // console.log(response)
+             console.log(response)
             // State
-            response.state
-            $("#coState").text("State" + response.state);
+            response.date
+            $("#coDate").text("State" + response.state);
             // console.log(response.state) 
             // Current Positive Cases
             response.positive
@@ -158,6 +158,9 @@ $.ajax({
         }
     })
 }
+document.getElementById("searchbox").addEventListener("search", function(event) {
+    $(".resultingarticles").empty();  
+  });
 // Mapquest API
 window.onload = function() {
     getData();
