@@ -1,5 +1,5 @@
-var state = "al"
 var newCitySearch = ''
+
 $(document).ready(function(){
 $('select').material_select();
 })
@@ -20,7 +20,7 @@ function getData(){
         method: "GET"
     }).then(function(response){
         
-        // console.log(response)
+        console.log(response)
         lat = response.city.coord.lat;
         // console.log(futureLat)
         lon = response.city.coord.lon;
@@ -28,7 +28,7 @@ function getData(){
         getRestaurantData(lat, lon);
         getWeather(lat, lon);
         positionMap(lat, lon);
-        getCoronavirus();
+        getCoronavirus(lat, lon);
         // call more data functions, passing lat and lon from this callback
     })
 }
@@ -47,8 +47,9 @@ function getRestaurantData(lat, lon){
         .then(function(response){
             // console.log(response)
             var restaurants = response.restaurants;
+            var resData = $('#resData')
+            resData.empty()
             for(i = 0; i < restaurants.length; i++){
-                var resData = $('#resData')
                 var rest = restaurants[i].restaurant;
                 var resDiv = $('<div>');
                 var p1 = $('<p>').text('name: ' + rest.name);
@@ -101,16 +102,24 @@ function positionMap(lat, lon){
       });
 }
 // COVID TRACKING API
-function getCoronavirus(){
+function getCoronavirus(lat, lon){
+    var queryUrl = "http://www.mapquestapi.com/geocoding/v1/reverse?key=QqtOgjcrFlsn4oZcILnGeOr0v21coXU6&location="+ lat+ "," + lon + "&includeRoadMetadata=true&includeNearestIntersection=true"
+        // console.log(queryUrl)
+    $.ajax({
+        url: queryUrl ,
+        method: "GET"})
+        .then(function(res){
+            // console.log(response.results[0].locations[0].adminArea3)
+            var covidState = res.results[0].locations[0].adminArea3.toLowerCase()
     $.ajax({
         // State name must only be two letters and lower case!
-        url: "http://covidtracking.com/api/v1/states/" + state + "/current.json",
+        url: "http://covidtracking.com/api/v1/states/" + covidState + "/current.json",
         method: "GET"})
         .then(function(response){
              console.log(response)
             // State
-            response.date
-            $("#coDate").text("State" + response.state);
+            response.state
+            $("#coState").text("State " + response.state);
             // console.log(response.state) 
             // Current Positive Cases
             response.positive
@@ -130,6 +139,7 @@ function getCoronavirus(){
             // console.log(response.death)
             
         })
+    })
 }
 // OPEN WEATHER API
 function getWeather(lat, lon){
@@ -162,6 +172,6 @@ document.getElementById("searchbox").addEventListener("search", function(event) 
     $(".resultingarticles").empty();  
   });
 // Mapquest API
-window.onload = function() {
-    getData();
-} 
+// window.onload = function() {
+//     getData();
+// } 
