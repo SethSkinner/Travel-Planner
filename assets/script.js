@@ -1,4 +1,3 @@
-var state = "al"
 var newCitySearch = ''
 //var queryURL= "https://api.openweathermap.org/data/2.5/forecast?q=" + "birmingham" + "&appid=007c688e86824172fcd3437ec768284b"
 // Needed for dropdown that isn't working
@@ -60,7 +59,7 @@ function getRestaurantData(lat, lon){
                 var p4 =$('<p>').text('phone #: ' + rest.phone_numbers);
                 var p5 = $('<p>').text('open: ' + rest.timings);
                 var p6 = $('<p>').text('rating: ' + rest.user_rating.aggregate_rating);
-                var p7 = $('<p>').text('url: ' + rest.url);
+                var p7 = $('<a>').attr('href' + rest.url);
                 resData.append(resDiv);
                 resDiv.append(p1);
                 // Restaurant Name
@@ -146,6 +145,4 @@ $.ajax({
 // Mapquest API
 window.onload = function() {
     getData();
-    getRestaurantData();
-    
 } 
