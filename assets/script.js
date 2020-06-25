@@ -87,6 +87,38 @@ function getRestaurantData(lat, lon){
             }
         })
 }
+//function to clear out all of the data on the page to be reset
+/*$( "#target" ).click(function clear(){
+    var appendeddiv = append
+    var append = 'div id="map" style="width: 100%; height: 530px;"></div>'
+    $('#0date').empty();
+    $('#1date').empty();
+    $('#2date').empty();
+    $('#3date').empty();
+    $('#4date').empty();
+    $('#0icons').attr('src', '');
+    $('#1icons').attr('src', '');
+    $('#2icons').attr('src', '');
+    $('#3icons').attr('src', '');
+    $('#4icons').attr('src', '');
+    $('#0temps').empty();
+    $('#1temps').empty();
+    $('#2temps').empty();
+    $('#3temps').empty();
+    $('#4temps').empty();
+    $('#0humidities').empty();
+    $('#1humidities').empty();
+    $('#2humidities').empty();
+    $('#3humidities').empty();
+    $('#4humidities').empty();
+    $('#map').empty();
+    $('#resData').empty();
+    $('#coState').empty();
+    $('#coPos').empty();
+    $('#coIncrease').empty();
+    $('#coHospital').empty();
+    $('#coDeaths').empty();
+});*/
 
 function positionMap(lat, lon){
     L.mapquest.key = 'QqtOgjcrFlsn4oZcILnGeOr0v21coXU6';
@@ -101,6 +133,7 @@ function positionMap(lat, lon){
         end: [lat,lon]
       });
 }
+
 // COVID TRACKING API
 function getCoronavirus(lat, lon){
     var queryUrl = "http://www.mapquestapi.com/geocoding/v1/reverse?key=QqtOgjcrFlsn4oZcILnGeOr0v21coXU6&location="+ lat+ "," + lon + "&includeRoadMetadata=true&includeNearestIntersection=true"
@@ -119,25 +152,24 @@ function getCoronavirus(lat, lon){
              console.log(response)
             // State
             response.state
-            $("#coState").text("State " + response.state);
+            $("#coState").text("     State: " + response.state);
             // console.log(response.state) 
             // Current Positive Cases
             response.positive
-            $("#coPos").text("Positive Cases=" + response.positive)
+            $("#coPos").text("     Positive Cases: " + response.positive)
             // console.log(response.positive)
             // Positive Cases Increase
             response.positiveIncrease
-            $("#coIncrease").text("Increased by " + response.positiveIncrease)
+            $("#coIncrease").text("     Increased by: " + response.positiveIncrease)
             // console.log(response.positiveIncrease)
             // Hospitalized Currently
             response.hospitalizedCurrently
-            $("#coHospital").text("Currently in the hospital= " + response.hospitalizedCurrently)
+            $("#coHospital").text("     Currently in the hospital: " + response.hospitalizedCurrently)
             // console.log(response.hospitalizedCurrently)
             // Deaths
             response.death
-            $("#coDeaths").text("Current Deaths= " + response.death)
+            $("#coDeaths").text("     Current Deaths: " + response.death)
             // console.log(response.death)
-            
         })
     })
 }
@@ -168,9 +200,6 @@ $.ajax({
         }
     })
 }
-document.getElementById("searchbox").addEventListener("search", function(event) {
-    $(".resultingarticles").empty();  
-  });
 // Mapquest API
 // window.onload = function() {
 //     getData();
