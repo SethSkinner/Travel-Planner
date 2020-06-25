@@ -10,9 +10,9 @@ App that helps you plan for travel destinations it will give you api data on the
 6. used user inputs in javascript to get correct data needed for each api
 7. added github links to creator names in the top right corner
  
- ##Link to Deployed Website
+ # #Link to Deployed Website
  https://sethskinner.github.io/Travel-Planner/
 
-###screenshot
-![image of app](https://photos.google.com/photo/AF1QipMYhVOrV73rPTY5OFuZbMTzv1sSyrZfCNkyeku9)
+# # #screenshot
+![image of app](https://lh3.googleusercontent.com/5b0SXkt9mdxiCrlBjjeDyY3bCD1eg1GXHSR5wpljBAM-2s4Qk0KqpA2X3-40GuFPSZ2uTA=s151)
  
