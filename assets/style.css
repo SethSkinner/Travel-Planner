@@ -51,3 +51,7 @@ html, body {
   .textalign {
     text-align: center;
   }
+
+  .text-center {
+      justify-content: center;
+  }
