@@ -186,7 +186,7 @@ $.ajax({
             
             if(response.list[i].dt_txt.split(" ")[1] == "15:00:00")
             {
-                //putting data onto the elements on the page in current day div
+                //putting data onto the elements on the page in 5 day divs
                 var day = response.list[i].dt_txt.split("-")[2].split(" ")[0];
                 var month = response.list[i].dt_txt.split("-")[1];
                 var year = response.list[i].dt_txt.split("-")[0];

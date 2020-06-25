@@ -36,6 +36,7 @@ html, body {
 
   .card1 {
       background-color: whitesmoke;
+      font-size: 10px;
   }
 
   .s1 {
@@ -45,4 +46,8 @@ html, body {
   .coviddata {
       text-align: center;
       color: whitesmoke;
+  }
+
+  .textalign {
+    text-align: center;
   }
