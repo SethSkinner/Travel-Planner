@@ -3,13 +3,12 @@ var newCitySearch = ''
 $(document).ready(function(){
 $('select').material_select();
 })
-// Getting data from search bar(Need to find a way to pull this out and put in queryURL)
+// Getting data from search bar.
 $(document).keypress(function (e){
     if (e.which == 13) {
         var citySearchEl = $("#citySearchEl").val();
         newCitySearch = citySearchEl;
         getData()
-      console.log(citySearchEl)
     }
 })
 console.log(citySearchEl)
@@ -19,23 +18,18 @@ function getData(){
         url: queryURL,
         method: "GET"
     }).then(function(response){
-        
-        console.log(response)
         lat = response.city.coord.lat;
-        // console.log(futureLat)
         lon = response.city.coord.lon;
     
         getRestaurantData(lat, lon);
         getWeather(lat, lon);
         positionMap(lat, lon);
         getCoronavirus(lat, lon);
-        // call more data functions, passing lat and lon from this callback
     })
 }
-
-// all the functions
+// Restaurant API
 function getRestaurantData(lat, lon){
-    // ajax
+    
      console.log("lat=" + lat + " - lon=" + lon);
     $.ajax({
         url: "https://developers.zomato.com/api/v2.1/search?count=5&lat=" + lat + "&lon=" + lon + "&radius=8050&sort=rating:",
@@ -45,7 +39,7 @@ function getRestaurantData(lat, lon){
         } 
     })
         .then(function(response){
-            // console.log(response)
+        
             var restaurants = response.restaurants;
             var resData = $('#resData')
             resData.empty()
@@ -61,28 +55,12 @@ function getRestaurantData(lat, lon){
                 var p7 = $('<p>').text('url: ' + rest.url);
                 resData.append(resDiv);
                 resDiv.append(p1);
-                // Restaurant Name
-                // console.log(rest.name);
                 resDiv.append(p2);
-                // rest food type
-                // console.log(rest.cuisines);
                 resDiv.append(p3);
-                // Address
-                // console.log(rest.location.address);
                 resDiv.append(p4);
-                // phone
-                // console.log(rest.phone_numbers);
                 resDiv.append(p5);
-                // time open
-                // console.log(rest.timings);
                 resDiv.append(p6);
-                // rating
-                // console.log(rest.user_rating.aggregate_rating);
-                // photo url
-                // console.log(rest.photos_url)
-                // rest url
                 resDiv.append(p7);
-                // console.log(rest.url)
                 resDiv.append('<hr>')
             }
         })
@@ -119,7 +97,7 @@ function getRestaurantData(lat, lon){
     $('#coHospital').empty();
     $('#coDeaths').empty();
 });*/
-
+// MapQuest API
 function positionMap(lat, lon){
     L.mapquest.key = 'QqtOgjcrFlsn4oZcILnGeOr0v21coXU6';
     var map = L.mapquest.map('map', {
@@ -137,39 +115,30 @@ function positionMap(lat, lon){
 // COVID TRACKING API
 function getCoronavirus(lat, lon){
     var queryUrl = "http://www.mapquestapi.com/geocoding/v1/reverse?key=QqtOgjcrFlsn4oZcILnGeOr0v21coXU6&location="+ lat+ "," + lon + "&includeRoadMetadata=true&includeNearestIntersection=true"
-        // console.log(queryUrl)
     $.ajax({
         url: queryUrl ,
         method: "GET"})
         .then(function(res){
-            // console.log(response.results[0].locations[0].adminArea3)
             var covidState = res.results[0].locations[0].adminArea3.toLowerCase()
     $.ajax({
-        // State name must only be two letters and lower case!
         url: "http://covidtracking.com/api/v1/states/" + covidState + "/current.json",
         method: "GET"})
         .then(function(response){
-             console.log(response)
             // State
             response.state
             $("#coState").text("     State: " + response.state);
-            // console.log(response.state) 
             // Current Positive Cases
             response.positive
-            $("#coPos").text("     Positive Cases: " + response.positive)
-            // console.log(response.positive)
+            $("#coPos").text("     Positive Cases: " + response.positive);
             // Positive Cases Increase
             response.positiveIncrease
-            $("#coIncrease").text("     Increased by: " + response.positiveIncrease)
-            // console.log(response.positiveIncrease)
+            $("#coIncrease").text("     Increased by: " + response.positiveIncrease);
             // Hospitalized Currently
             response.hospitalizedCurrently
-            $("#coHospital").text("     Currently in the hospital: " + response.hospitalizedCurrently)
-            // console.log(response.hospitalizedCurrently)
+            $("#coHospital").text("     Currently in the hospital: " + response.hospitalizedCurrently);
             // Deaths
             response.death
             $("#coDeaths").text("     Current Deaths: " + response.death)
-            // console.log(response.death)
         })
     })
 }
@@ -200,7 +169,6 @@ $.ajax({
         }
     })
 }
-// Mapquest API
 // window.onload = function() {
 //     getData();
 // } 
