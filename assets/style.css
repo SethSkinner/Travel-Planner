@@ -1,0 +1,57 @@
+body {
+    background-image: url(https://skitguys.com/media/images/video/Silent_Night_Manger_Still_Shift-HD.jpg);
+}
+
+.text {
+    color: white;
+}
+
+nav {
+    background-image: linear-gradient(to right, black , whitesmoke);
+}
+
+.links {
+    color: black;
+}
+
+.page-footer {
+    background-color: transparent;
+}
+
+html, body {
+    height: 100%;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  .content {
+    flex: 1 0 auto;
+  }
+  .footer {
+    flex-shrink: 0;
+    display: inline;
+    text-align: center;
+  }
+
+  .card1 {
+      background-color: whitesmoke;
+      font-size: 10px;
+  }
+
+  .s1 {
+      justify-content: center;
+  }
+
+  .coviddata {
+      text-align: center;
+      color: whitesmoke;
+  }
+
+  .textalign {
+    text-align: center;
+  }
+
+  .text-center {
+      justify-content: center;
+  }

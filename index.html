@@ -19,19 +19,21 @@
          <div class="nav-wrapper">
             <a href="#" class="brand-logo">Travel Planner</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-               <li><a href="https://github.com/christopherm970">Chris Mims</a></li>
-               <li><a href="https://github.com/EMackPierre">Ernst M Pierre</a></li>
-               <li><a href="https://github.com/SethSkinner">Seth Skinner</a></li>
+               <li class='links'>made by:</li>
+               <li><a class='links' href="https://github.com/christopherm970">Chris Mims</a></li>
+               <li><a class='links' href="https://github.com/EMackPierre">Ernst M Pierre</a></li>
+               <li><a class='links' href="https://github.com/SethSkinner">Seth Skinner</a></li>
             </ul>
          </div>
       </nav>
       <hr>
       <main class='container'>
-         <section class="section section-search teal darken-1 white-text">
+         <section class="section section-search darken-1 white-text">
             <div class="row">
                <div class="col s12">
-                  <h3>What City Are You Traveling To?</h3>
+                  <h3 class='textalign'>What City Are You Traveling To?</h3>
                   <div class="input-field">
+                     <!--<button type="button" id='target'>Clear!</button>-->
                      <input class="white grey-text" id="citySearchEl" placeholder="Birmingham, Panama City Beach, Orlando, etc..." type="text">
                   </div>
                </div>
@@ -39,59 +41,62 @@
          </section>
          <hr>
          <div class='row'>
-         <div class="row">
             <div class="col s1 offset-s1" class='weather-container'>
-               <div id='0date' class='text-center'></div>
-               <img id='0icons' class='text-center'></img>
-               <div id='0temps' class='text-center'></div>
-               <div id='0humidities' class='text-center'></div>
+               <div id='0date' class='text-center text'></div>
+               <img id='0icons' class='text-center text'></img>
+               <div id='0temps' class='text-center text'></div>
+               <div id='0humidities' class='text-center text'></div>
             </div>
             <div class="col s1 offset-s1" class='weather-container'>
-               <div id='1date' class='text-center'></div>
-               <img src="" id='1icons' class='text-center'></img>
-               <div id='1temps' class='text-center'></div>
-               <div id='1humidities' class='text-center'></div>
+               <div id='1date' class='text-center text'></div>
+               <img src="" id='1icons' class='text-center text'></img>
+               <div id='1temps' class='text-center text'></div>
+               <div id='1humidities' class='text-center text '></div>
             </div>
             <div class="col s1 offset-s1" class='weather-container'>
-               <div id='2date' class='text-center'></div>
-               <img src="" id='2icons' class='text-center'></img>
-               <div id='2temps' class='text-center'></div>
-               <div id='2humidities' class='text-center'></div>
+               <div id='2date' class='text-center text'></div>
+               <img src="" id='2icons' class='text-center text'></img>
+               <div id='2temps' class='text-center text'></div>
+               <div id='2humidities' class='text-center text'></div>
             </div>
             <div class="col s1 offset-s1" class='weather-container'>
-               <div id='3date' class='text-center'></div>
-               <img src="" id='3icons' class='text-center'></img>
-               <div id='3temps' class='text-center'></div>
-               <div id='3humidities' class='text-center'></div>
+               <div id='3date' class='text-center text'></div>
+               <img src="" id='3icons' class='text-center text'></img>
+               <div id='3temps' class='text-center text'></div>
+               <div id='3humidities' class='text-center text'></div>
             </div>
             <div class="col s1 offset-s1" class='weather-container'>
-               <div id='4date' class='text-center'></div>
-               <img id='4icons' class='text-center'></img>
-               <div id='4temps' class='text-center'></div>
-               <div id='4humidities' class='text-center'></div>
+               <div id='4date' class='text-center text'></div>
+               <img id='4icons' class='text-center text'></img>
+               <div id='4temps' class='text-center text'></div>
+               <div id='4humidities' class='text-center text'></div>
             </div>
             <div class='col s6'>
                <hr>
-               <div id="map" style="width: 100%; height: 530px;"></div>
+            <div id='appended-map'>
+               <div id="map" style="width: 100%; height: 732px;"></div>
+            </div>
             </div>
             <div class='col s6'>
-               <div class="card blue-grey darken-1">
-                  <div class="card-content white-text">
-                     <span class="card-title">Top 5 restaurants</span>
+               <hr>
+               <div class="card blue-grey darken-1 card1">
+                  <div class="card-content black-text card1">
+                     <span class="card-title textalign"><u>Top 5 restaurants</u></span>
                      <div id='resData'></div>
                   </div>
                </div>
             </div>
          </div>
       </main>
-      <footer class="page-footer">
-         <div class="container">
-         <a class="grey-text text-lighten-4 right" href="#!"></a>
-         <div id="coState"></div>
-         <div id="coPos"></div>
-         <div id="coIncrease"></div>
-         <div id="coHospital"></div>
-         <div id="coDeaths"></div>
-      </footer>
+      <h2 class ='coviddata'><u>Covid Data:</u></h2>
+      <div class="content footer">
+         <span id="coState" class='text'></span>---     
+         <span id="coPos" class='text'></span>---    
+         <span id="coIncrease" class='text'></span>---     
+         <span id="coHospital" class='text'></span>---     
+         <span id="coDeaths" class='text'></span>---     
+       </div>
+       <footer class="footer"></footer>
    </body>
 </html>
+         
